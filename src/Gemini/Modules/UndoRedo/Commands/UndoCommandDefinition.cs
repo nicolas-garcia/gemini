@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.Composition;
 using System.Windows.Input;
+using System.Windows.Media;
 using Gemini.Framework.Commands;
 using Gemini.Modules.Shell.Commands;
 using Gemini.Properties;
@@ -27,9 +28,9 @@ namespace Gemini.Modules.UndoRedo.Commands
             get { return Resources.EditUndoCommandToolTip; }
         }
 
-        public override Uri IconSource
+        public override ImageSource IconSource
         {
-            get { return new Uri("pack://application:,,,/Gemini;component/Resources/Icons/Undo.png"); }
+            get { return ToolBars.Converters.BitmapImageToImageSourceConverter.Convert(Properties.Resources.undo_32x32_blue); }
         }
 
         [Export]

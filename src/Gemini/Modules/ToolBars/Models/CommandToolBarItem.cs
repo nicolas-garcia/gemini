@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Globalization;
 using System.Windows.Input;
+using System.Windows.Media;
 using Caliburn.Micro;
 using Gemini.Framework.Commands;
 using Gemini.Framework.ToolBars;
@@ -25,7 +26,7 @@ namespace Gemini.Modules.ToolBars.Models
             get { return _toolBarItem.Display; }
         }
 
-	    public Uri IconSource
+	    public ImageSource IconSource
 	    {
 	        get { return _command.IconSource; }
 	    }

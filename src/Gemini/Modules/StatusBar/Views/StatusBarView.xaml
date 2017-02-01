@@ -1,24 +1,43 @@
 ﻿<UserControl x:Class="Gemini.Modules.StatusBar.Views.StatusBarView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="clr-namespace:Gemini.Framework.Controls"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-	<UserControl.Resources>
-		<Style x:Key="StatusBarItemStyle" TargetType="StatusBarItem">
-			<Setter Property="Grid.Column" Value="{Binding Index}" />
-			<Setter Property="Content" Value="{Binding Message}" />
-		</Style>
-	</UserControl.Resources>
-    <StatusBar x:Name="StatusBar" ItemsSource="{Binding Items}"
+             xmlns:viewModels="clr-namespace:Gemini.Modules.StatusBar.ViewModels"
+             mc:Ignorable="d"
+             d:DesignHeight="18"
+             d:DesignWidth="667"
+             d:DataContext="{d:DesignInstance Type={x:Type viewModels:StatusBarViewModel}, IsDesignTimeCreatable=True}">
+    <UserControl.Resources>
+        <Style x:Key="StatusBarItemStyle" TargetType="StatusBarItem">
+            <Setter Property="DockPanel.Dock" Value="{Binding Dock}" />
+            <Setter Property="Visibility" Value="{Binding Visibility}" />
+        </Style>
+
+        <DataTemplate DataType="{x:Type viewModels:ProgressBarStatusBarViewModel}">
+            <ProgressBar Value="{Binding Content}" IsIndeterminate="{Binding IsIndeterminate}"
+                         Width="{Binding Width.Value}" Height="15" />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:TextStatusBarViewModel}">
+            <TextBlock Text="{Binding Content}" />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:ButtonStatusBarViewModel}">
+            <Button Command="{Binding ButtonAction}" ToolTip="{Binding Tooltip}">
+                <Image Source="{Binding ImageSource}" Width="15"
+                       Margin="3,0" />
+            </Button>
+        </DataTemplate>
+    </UserControl.Resources>
+    <StatusBar x:Name="StatusBar"
+               ItemsSource="{Binding Items}"
                controls:DynamicStyle.ItemContainerBaseStyle="{DynamicResource {x:Type StatusBarItem}}"
                controls:DynamicStyle.ItemContainerDerivedStyle="{StaticResource StatusBarItemStyle}"
                Background="#FF007ACC" Foreground="White">
         <StatusBar.ItemsPanel>
             <ItemsPanelTemplate>
-                <Grid x:Name="StatusBarGrid" Loaded="OnStatusBarGridLoaded" />
+                <!--<Grid x:Name="StatusBarGrid" Loaded="OnStatusBarGridLoaded" />-->
+                <DockPanel LastChildFill="False" />
             </ItemsPanelTemplate>
         </StatusBar.ItemsPanel>
     </StatusBar>

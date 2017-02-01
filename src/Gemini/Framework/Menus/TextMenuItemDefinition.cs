@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using System.Windows.Media;
 using Gemini.Framework.Commands;
 
 namespace Gemini.Framework.Menus
@@ -7,14 +8,14 @@ namespace Gemini.Framework.Menus
     public class TextMenuItemDefinition : MenuItemDefinition
     {
         private readonly string _text;
-        private readonly Uri _iconSource;
+        private readonly ImageSource _iconSource;
 
         public override string Text
         {
             get { return _text; }
         }
 
-        public override Uri IconSource
+        public override ImageSource IconSource
         {
             get { return _iconSource; }
         }
@@ -29,7 +30,7 @@ namespace Gemini.Framework.Menus
             get { return null; }
         }
 
-        public TextMenuItemDefinition(MenuItemGroupDefinition group, int sortOrder, string text, Uri iconSource = null)
+        public TextMenuItemDefinition(MenuItemGroupDefinition group, int sortOrder, string text, ImageSource iconSource = null)
             : base(group, sortOrder)
         {
             _text = text;

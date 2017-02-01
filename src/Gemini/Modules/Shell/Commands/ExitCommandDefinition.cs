@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.Composition;
 using System.Windows.Input;
+using System.Windows.Media;
 using Gemini.Framework.Commands;
 using Gemini.Properties;
 
@@ -25,7 +26,12 @@ namespace Gemini.Modules.Shell.Commands
             get { return Resources.FileExitCommandToolTip; }
         }
 
+        public override ImageSource IconSource
+        {
+            get { return ToolBars.Converters.BitmapImageToImageSourceConverter.Convert(Resources.disconnect_32x32_red); }
+        }
+
         [Export]
-        public static CommandKeyboardShortcut KeyGesture = new CommandKeyboardShortcut<ExitCommandDefinition>(new KeyGesture(Key.F4, ModifierKeys.Alt));
+        public static CommandKeyboardShortcut KeyGesture = new CommandKeyboardShortcut<ExitCommandDefinition>(new KeyGesture(Key.Q, ModifierKeys.Control));
     }
 }

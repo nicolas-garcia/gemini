@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Input;
+using System.Windows.Media;
 using Caliburn.Micro;
 using Gemini.Framework.Commands;
 
@@ -19,7 +20,7 @@ namespace Gemini.Modules.MainMenu.Models
             get { return _command.Text; }
         }
 
-        public override Uri IconSource
+        public override ImageSource IconSource
         {
             get { return _command.IconSource; }
         }

@@ -4,7 +4,7 @@ using Gemini.Properties;
 
 namespace Gemini.Modules.ToolBars
 {
-    internal static class ToolBarDefinitions
+    public static class ToolBarDefinitions
     {
         [Export]
         public static ToolBarDefinition StandardToolBar = new ToolBarDefinition(0, Resources.ToolBarStandard);

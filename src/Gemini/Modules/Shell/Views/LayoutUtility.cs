@@ -63,14 +63,7 @@ namespace Gemini.Modules.Shell.Views
                     // Don't create any panels if something went wrong.
                     e.Cancel = true;
                 };
-
-            try
-            {
-                layoutSerializer.Deserialize(stream);
-            }
-            catch
-            {
-            }
+            layoutSerializer.Deserialize(stream);
         }
     }
 }

@@ -6,6 +6,7 @@ using Caliburn.Micro;
 using Gemini.Framework;
 using Gemini.Framework.Commands;
 using Gemini.Framework.Services;
+using Gemini.Framework.Threading;
 using Microsoft.Win32;
 
 namespace Gemini.Modules.Shell.Commands
@@ -27,13 +28,15 @@ namespace Gemini.Modules.Shell.Commands
         {
             var dialog = new OpenFileDialog();
 
-            dialog.Filter = "All Supported Files|" + string.Join(";", _editorProviders
-                .SelectMany(x => x.FileTypes).Select(x => "*" + x.FileExtension));
+            if (this._editorProviders.Length > 0)
+            {
+                dialog.Filter = "All Supported Files|" + string.Join(";", _editorProviders
+                    .SelectMany(x => x.FileTypes).Select(x => "*" + x.FileExtension));
 
-            dialog.Filter += "|" + string.Join("|", _editorProviders
-                .SelectMany(x => x.FileTypes)
-                .Select(x => x.Name + "|*" + x.FileExtension));
-
+                dialog.Filter += "|" + string.Join("|", _editorProviders
+                    .SelectMany(x => x.FileTypes)
+                    .Select(x => x.Name + "|*" + x.FileExtension));
+            }
             if (dialog.ShowDialog() == true)
                 _shell.OpenDocument(await GetEditor(dialog.FileName));
         }
@@ -47,7 +50,9 @@ namespace Gemini.Modules.Shell.Commands
                 return null;
 
             var editor = provider.Create();
-
+            if (editor != null)
+                return null;
+            
             var viewAware = (IViewAware) editor;
             viewAware.ViewAttached += (sender, e) =>
             {

@@ -42,9 +42,5 @@ namespace Gemini.Modules.Shell
         [Export]
         public static MenuItemDefinition WindowDocumentList = new CommandMenuItemDefinition<SwitchToDocumentCommandListDefinition>(
             MainMenu.MenuDefinitions.WindowDocumentListMenuGroup, 0);
-
-        [Export]
-        public static MenuItemDefinition ViewFullscreenItem = new CommandMenuItemDefinition<ViewFullScreenCommandDefinition>(
-            MainMenu.MenuDefinitions.ViewPropertiesMenuGroup, 0);
     }
 }

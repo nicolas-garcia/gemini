@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using System.Windows.Media;
 using Caliburn.Micro;
 using Gemini.Framework.Commands;
 
@@ -16,7 +17,7 @@ namespace Gemini.Framework.Menus
             get { return _commandDefinition.Text; }
         }
 
-        public override Uri IconSource
+        public override ImageSource IconSource
         {
             get { return _commandDefinition.IconSource; }
         }

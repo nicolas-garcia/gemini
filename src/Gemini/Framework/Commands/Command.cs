@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Media;
 using Caliburn.Micro;
 
 namespace Gemini.Framework.Commands
@@ -11,7 +12,7 @@ namespace Gemini.Framework.Commands
         private bool _checked;
         private string _text;
         private string _toolTip;
-        private Uri _iconSource;
+        private ImageSource _iconSource;
 
         public CommandDefinitionBase CommandDefinition
         {
@@ -68,7 +69,7 @@ namespace Gemini.Framework.Commands
             }
         }
 
-        public Uri IconSource
+        public ImageSource IconSource
         {
             get { return _iconSource; }
             set

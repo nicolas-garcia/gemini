@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using System.Windows.Media;
 using Gemini.Framework.Commands;
 
 namespace Gemini.Framework.Menus
@@ -8,7 +9,7 @@ namespace Gemini.Framework.Menus
     {
         public abstract int SortOrder { get; }
         public abstract string Text { get; }
-        public abstract Uri IconSource { get; }
+        public abstract ImageSource IconSource { get; }
         public abstract KeyGesture KeyGesture { get; }
         public abstract CommandDefinitionBase CommandDefinition { get; }
     }

@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Windows.Media;
 
 namespace Gemini.Framework.Commands
 {
     public abstract class CommandDefinition : CommandDefinitionBase
     {
-        public override Uri IconSource
+        public override ImageSource IconSource
         {
             get { return null; }
         }

@@ -23,11 +23,11 @@ namespace Gemini.Modules.Shell.ViewModels
         public event EventHandler ActiveDocumentChanged;
 
 #pragma warning disable 649
-		[ImportMany(typeof(IModule))]
-		private IEnumerable<IModule> _modules;
+        [ImportMany(typeof(IModule))]
+        private IEnumerable<IModule> _modules;
 
         [Import]
-	    private IThemeManager _themeManager;
+        private IThemeManager _themeManager;
 
         [Import]
         private IMenu _mainMenu;
@@ -43,92 +43,92 @@ namespace Gemini.Modules.Shell.ViewModels
 #pragma warning restore 649
 
         private IShellView _shellView;
-	    private bool _closing;
+        private bool _closing;
 
         public IMenu MainMenu
         {
-            get { return _mainMenu; }
+            get { return this._mainMenu; }
         }
 
         public IToolBars ToolBars
         {
-            get { return _toolBars; }
+            get { return this._toolBars; }
         }
 
-		public IStatusBar StatusBar
-		{
-			get { return _statusBar; }
-		}
+        public IStatusBar StatusBar
+        {
+            get { return this._statusBar; }
+        }
 
-	    private ILayoutItem _activeLayoutItem;
-	    public ILayoutItem ActiveLayoutItem
-	    {
-	        get { return _activeLayoutItem; }
-	        set
-	        {
-	            if (ReferenceEquals(_activeLayoutItem, value))
-	                return;
+        private ILayoutItem _activeLayoutItem;
+        public ILayoutItem ActiveLayoutItem
+        {
+            get { return this._activeLayoutItem; }
+            set
+            {
+                if (ReferenceEquals(this._activeLayoutItem, value))
+                    return;
 
-	            _activeLayoutItem = value;
+                this._activeLayoutItem = value;
 
-	            if (value is IDocument)
-	                ActivateItem((IDocument) value);
+                if (value is IDocument)
+                    this.ActivateItem((IDocument) value);
 
-	            NotifyOfPropertyChange(() => ActiveLayoutItem);
-	        }
-	    }
+                this.NotifyOfPropertyChange(() => this.ActiveLayoutItem);
+            }
+        }
 
         private readonly BindableCollection<ITool> _tools;
         public IObservableCollection<ITool> Tools
         {
-            get { return _tools; }
+            get { return this._tools; }
         }
 
         public IObservableCollection<IDocument> Documents
         {
-            get { return Items; }
+            get { return this.Items; }
         }
 
         private bool _showFloatingWindowsInTaskbar;
         public bool ShowFloatingWindowsInTaskbar
         {
-            get { return _showFloatingWindowsInTaskbar; }
+            get { return this._showFloatingWindowsInTaskbar; }
             set
             {
-                _showFloatingWindowsInTaskbar = value;
-                NotifyOfPropertyChange(() => ShowFloatingWindowsInTaskbar);
-                if (_shellView != null)
-                    _shellView.UpdateFloatingWindows();
+                this._showFloatingWindowsInTaskbar = value;
+                this.NotifyOfPropertyChange(() => this.ShowFloatingWindowsInTaskbar);
+                if (this._shellView != null)
+                    this._shellView.UpdateFloatingWindows();
             }
         }
 
-	    public virtual string StateFile
-	    {
-	        get { return @".\ApplicationState.bin"; }
-	    }
+        public virtual string StateFile
+        {
+            get { return @".\ApplicationState.bin"; }
+        }
 
         public bool HasPersistedState
         {
-            get { return File.Exists(StateFile); }
+            get { return File.Exists(this.StateFile); }
         }
 
         public ShellViewModel()
         {
-            ((IActivate)this).Activate();
+            ((IActivate) this).Activate();
 
-            _tools = new BindableCollection<ITool>();
+            this._tools = new BindableCollection<ITool>();
         }
 
-	    protected override void OnViewLoaded(object view)
-	    {
-            foreach (var module in _modules)
+        protected override void OnViewLoaded(object view)
+        {
+            foreach (var module in this._modules)
                 foreach (var globalResourceDictionary in module.GlobalResourceDictionaries)
                     Application.Current.Resources.MergedDictionaries.Add(globalResourceDictionary);
 
-	        foreach (var module in _modules)
-	            module.PreInitialize();
-	        foreach (var module in _modules)
-	            module.Initialize();
+            foreach (var module in this._modules)
+                module.PreInitialize();
+            foreach (var module in this._modules)
+                module.Initialize();
 
             // If after initialization no theme was loaded, load the default one
             if (_themeManager.CurrentTheme == null)
@@ -147,43 +147,40 @@ namespace Gemini.Modules.Shell.ViewModels
             _shellView = (IShellView)view;
             if (!_layoutItemStatePersister.LoadState(this, _shellView, StateFile))
             {
-                foreach (var defaultDocument in _modules.SelectMany(x => x.DefaultDocuments))
-                    OpenDocument(defaultDocument);
-                foreach (var defaultTool in _modules.SelectMany(x => x.DefaultTools))
-                    ShowTool((ITool)IoC.GetInstance(defaultTool, null));
+                this.LoadDefaultLayout();
             }
 
-            foreach (var module in _modules)
+            foreach (var module in this._modules)
                 module.PostInitialize();
 
             base.OnViewLoaded(view);
         }
 
-	    public void ShowTool<TTool>()
-            where TTool : ITool
-	    {
-	        ShowTool(IoC.Get<TTool>());
-	    }
+        public void ShowTool<TTool>() where TTool : ITool
+        {
+            this.ShowTool(IoC.Get<TTool>());
+        }
 
-	    public void ShowTool(ITool model)
-		{
-		    if (Tools.Contains(model))
-		        model.IsVisible = true;
-		    else
-		        Tools.Add(model);
-		    model.IsSelected = true;
-	        ActiveLayoutItem = model;
-		}
+        public void ShowTool(ITool model)
+        {
+            if (this.Tools.Contains(model))
+                model.IsVisible = true;
+            else
+                this.Tools.Add(model);
+            model.IsSelected = true;
+            this.ActiveLayoutItem = model;
+            model.Activate();
+        }
 
-		public void OpenDocument(IDocument model)
-		{
-			ActivateItem(model);
-		}
+        public void OpenDocument(IDocument model)
+        {
+            this.ActivateItem(model);
+        }
 
-		public void CloseDocument(IDocument document)
-		{
-			DeactivateItem(document, true);
-		}
+        public void CloseDocument(IDocument document)
+        {
+            this.DeactivateItem(document, true);
+        }
 
         private bool _activateItemGuard = false;
 
@@ -205,7 +202,7 @@ namespace Gemini.Modules.Shell.ViewModels
 
                 base.ActivateItem(item);
 
-                RaiseActiveDocumentChanged();
+                this.RaiseActiveDocumentChanged();
             }
             finally
             {
@@ -213,38 +210,38 @@ namespace Gemini.Modules.Shell.ViewModels
             }
         }
 
-	    private void RaiseActiveDocumentChanging()
-	    {
-            var handler = ActiveDocumentChanging;
+        private void RaiseActiveDocumentChanging()
+        {
+            var handler = this.ActiveDocumentChanging;
             if (handler != null)
                 handler(this, EventArgs.Empty);
-	    }
+        }
 
-	    private void RaiseActiveDocumentChanged()
-	    {
-            var handler = ActiveDocumentChanged;
+        private void RaiseActiveDocumentChanged()
+        {
+            var handler = this.ActiveDocumentChanged;
             if (handler != null)
                 handler(this, EventArgs.Empty);
-	    }
+        }
 
         protected override void OnActivationProcessed(IDocument item, bool success)
         {
-            if (!ReferenceEquals(ActiveLayoutItem, item))
-                ActiveLayoutItem = item;
+            if (!ReferenceEquals(this.ActiveLayoutItem, item))
+                this.ActiveLayoutItem = item;
 
             base.OnActivationProcessed(item, success);
         }
 
-	    public override void DeactivateItem(IDocument item, bool close)
-	    {
-	        RaiseActiveDocumentChanging();
+        public override void DeactivateItem(IDocument item, bool close)
+        {
+            this.RaiseActiveDocumentChanging();
 
-	        base.DeactivateItem(item, close);
+            base.DeactivateItem(item, close);
 
-            RaiseActiveDocumentChanged();
-	    }
+            this.RaiseActiveDocumentChanged();
+        }
 
-	    protected override void OnDeactivate(bool close)
+        protected override void OnDeactivate(bool close)
         {
             // Workaround for a complex bug that occurs when
             // (a) the window has multiple documents open, and
@@ -268,9 +265,9 @@ namespace Gemini.Modules.Shell.ViewModels
             //
             // My workaround is to use the following _closing variable, and ignore activation
             // requests that occur when _closing is true.
-            _closing = true;
+            this._closing = true;
 
-            _layoutItemStatePersister.SaveState(this, _shellView, StateFile);
+            this._layoutItemStatePersister.SaveState(this, this._shellView, this.StateFile);
 
             base.OnDeactivate(close);
         }
@@ -279,5 +276,31 @@ namespace Gemini.Modules.Shell.ViewModels
         {
             Application.Current.MainWindow.Close();
         }
-	}
+
+        public void CloseTool(ITool model)
+        {
+            if (!this.Tools.Contains(model))
+                return;
+            model.Deactivate(true);
+            if (model.CloseCommand != null)
+                model.CloseCommand.Execute(null);
+            this.Tools.Remove(model);
+        }
+
+        public void HideTool(ITool model)
+        {
+            if (!this.Tools.Contains(model))
+                return;
+            model.IsVisible = false;
+            model.Deactivate(false);
+        }
+
+        private void LoadDefaultLayout()
+        {
+            foreach (var defaultDocument in this._modules.SelectMany(x => x.DefaultDocuments))
+                this.OpenDocument(defaultDocument);
+            foreach (var defaultTool in this._modules.SelectMany(x => x.DefaultTools))
+                this.ShowTool((ITool) IoC.GetInstance(defaultTool, null));
+        }
+    }
 }

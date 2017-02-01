@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.ReflectionModel;
+using System.IO;
 using System.Linq;
 using Caliburn.Micro;
 using Gemini.Framework.Services;
@@ -17,7 +18,7 @@ namespace Gemini
 
     public class AppBootstrapper : BootstrapperBase
     {
-        private List<Assembly> _priorityAssemblies;
+        protected List<Assembly> _priorityAssemblies;
 
 		protected CompositionContainer Container { get; set; }
 
@@ -51,7 +52,8 @@ namespace Gemini
 		protected override void Configure()
 		{
             // Add all assemblies to AssemblySource (using a temporary DirectoryCatalog).
-            var directoryCatalog = new DirectoryCatalog(@"./");
+            var directoryCatalog = new DirectoryCatalog(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+            //var directoryCatalog = new DirectoryCatalog(@"./");
             AssemblySource.Instance.AddRange(
                 directoryCatalog.Parts
                     .Select(part => ReflectionModelServices.GetPartType(part).Value.Assembly)
@@ -114,12 +116,14 @@ namespace Gemini
 	    protected override void OnStartup(object sender, StartupEventArgs e)
 	    {
 	        base.OnStartup(sender, e);
-            DisplayRootViewFor<IMainWindow>();
+	        DisplayRootViewFor<IMainWindow>();
 	    }
 
         protected override IEnumerable<Assembly> SelectAssemblies()
         {
-            return new[] { Assembly.GetEntryAssembly() };
+            var assembly = Assembly.GetEntryAssembly() ?? Assembly.GetExecutingAssembly();
+			if (!AssemblySource.Instance.Contains(assembly))
+				yield return assembly;
         }
 	}
 }

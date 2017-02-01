@@ -192,6 +192,38 @@
   <data name="SettingsDisplayName" xml:space="preserve">
     <value>Options</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="load_32x32_blue" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAEGSURBVFhH7ZVLDoIwFEVZhWM34BZoR05tuxKH/uNOXAADB7YYx27Kv76aVzFNRRCoMfYmZwBp
+        37kJBaIqoUz2NXjpN4SnM8LVBbjGbDXH235CuHzIDd5KEJFOQXh+lhsaL4Hyky1+prESlKkJCHLlhtpL
+        oPxoi/KorUTM5RgGlpIbKpeAZz6C1+3gGl6Uj0sQIUGuKskNpUsQoYawcW8PqkLhEoTd5Tt7QB28LUG5
+        GsDCRuSG3BKUrduvgMOYuAa6SRPXDAPqygXOxcItcyDUErfVl1AgFAgFQoGvF6AsZfo7XgS9FreF/FC6
+        fNOC3+jWB9qF2ixxT3WcJ7oBtAu1Wf60QBTdAD1uy+mtwkVXAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="redo_32x32_blue" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAEHSURBVFhH7dc7TgMxEAbgLagQBXdJjT1LIEmDsB24B0egBqSUOQISKVL4sSV58DgOB6CAieSR
+        kOWCxuPGvzTFaovvt71buPtPhA6PYOxNfOQL3L6cgAlPUvsfnC9Q7i6+Kp/RlT1G9CHiNHwlhLL3CU7z
+        zXIcoP0Msc8Ep+HZiVaC0kpQWglKK0FpJSjVS/TzYYpQnQJn164eLlSYSB0+MnB5HIFLafx7gjLiqhIO
+        c3chtH/LwOXxXg1jPPN9BubALeKuDo73gnNEdgnKim8TlAeXxvWI1MFBDYBf+yYDl8cPQXyZgQ/DdDFR
+        61NhwiLBy6/8bwBej/C/X0WcZ+VpYonnMnjX/QKY5hwpsINOXAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="save_32x32_grey" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAEUSURBVFhH7ZZLbsIwEIaz4BAsOQLL8iwnITbHIIzkHZVt1iw5QrctrxyDI3AMmEQekaKhTVMH
+        pOJP+qUosef7pThSorIIsCsB5lQu9t1t80coEAqEAqHA/y8wUqqBG5c4IL2RI4aRscnWcjMwdpm5nPYr
+        Qi1ecNEHhhvqI6mYmZHT8YzBdHDh59VGH/lZTsjkrStAr5khVVNeTki18FXi93IiBt2LwWyYoWVTXU5k
+        JWS1En+XE5PE9vF1bBnJrfiTE1hggEN3jOw6/uVEXgK+LVGfnIgTO8RzsX+InJCgXyXYYon7yQmhdBPF
+        hzx47W7fl7zEo+QB77hDxfxA1BDu3Ag1b+HD4nddX6a67bQXnrRAFJ0BweENjdXFABoAAAAASUVORK5C
+        YII=
+</value>
+  </data>
   <data name="SettingsPageGeneral" xml:space="preserve">
     <value>General</value>
   </data>
@@ -215,6 +247,16 @@
   </data>
   <data name="ToolsOptionsCommandToolTip" xml:space="preserve">
     <value>Options</value>
+  </data>
+  <data name="undo_32x32_blue" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAEDSURBVFhH7Ze7DcIwEIZTMAGiYBUKEtPxCrEN7MA8CIkRKCiTM3S0QAiMwRAUYMTxSIQcCg4X
+        5JNOiuJP+v9cFTsUMBkOPKFmjK1K+Op3MAEjT8BRz1k/T5gfVvCIntfwx3A1rg2XZVTouK0dTqlwHFfA
+        FDUa3n75cw6MK47q9ynCM6FFeBFOQxGeCf2D8Ct5BRoCAlTpyCtRt16Cw96VUQ9VOsybUInXVz6qdJhL
+        RIkXhLZLwE6fd1Glw1hCQtyQUQdVOowlOMR16yUEbN3+oo0qHTklNvqXvIUqHeYSkf0SroS1Pm+iSofV
+        i8mdd5u4hrMhVFGhJ70JNbdzQ/74eu44F+e9He9EVFhBAAAAAElFTkSuQmCC
+</value>
   </data>
   <data name="ViewHistoryCommandText" xml:space="preserve">
     <value>_History</value>
@@ -279,10 +321,18 @@
   <data name="SaveChangesBeforeClosingMessage" xml:space="preserve">
     <value>Save changes to the {0} "{1}" before closing?</value>
   </data>
-  <data name="ViewFullScreenCommandText" xml:space="preserve">
-    <value>Full Screen</value>
-  </data>
-  <data name="ViewFullScreenCommandToolTip" xml:space="preserve">
-    <value>Full Screen</value>
+  <data name="disconnect_32x32_red" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAHvSURBVFhH7ZYtTwNBEIYrEAgEEoFEIBBN6O4WgtjsXRt+AD+AoBAIJIJgCAqBQCAQCAQCgcBh
+        KysQCAQSQYIhdO9KSEWZ2c6V++rR++AQ9EmmuZu9nXlvdmevlQkT0tC1Rd1RYldb/NyxxEVac21+qhXf
+        eZcrCxRyPPpSTg2C8H5B1nNstkfhf8a1xEFMkFwG1fh0bbFFKZJxLa5p4rO265LcqcFKaktsQJyeEWHx
+        Fg2NBteLkoNqtk/uXECsWxKgyTUap8GqnoCOYpvkzgWs/4kXk1zfOJLNYWlg8B5KNl2qAEwObfboDZrk
+        ZQkIJ4cqXBu/T4BTlABfSxtHV7FVx2J3nhNa5AwFmUFA473FrrpSzJMrFwEBkbLjtc1sbLeshicm5Yol
+        sATw0x4mL9TEJeWLEBSg+ENwYjHm7aE4AgI6zeVFuHjxTWzFlTWNdWyxhi1M+SJEugC+UAq+cNj7gzeA
+        B95kddYMAnB/bDaib2PmIdIFSLgSKAL9ullbGvp+qw09wiJM8rKPYiMCWhHOgqdXKWdKFxDmzwUE9kCa
+        fzEJwIa/wXhjfY4RfNBMgGVBQeTOBBzp6xDrg16qTe5kQPERTSjUXMW3KUUyeKjgyRYXJKP1tBKHFH58
+        sHw4cdDHGQ32kdvgNQo54d9TqXwBk48gI9l4Z1kAAAAASUVORK5CYII=
+</value>
   </data>
 </root>

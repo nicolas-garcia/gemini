@@ -1,4 +1,5 @@
 using System;
+using System.Windows.Media;
 
 namespace Gemini.Framework.Commands
 {
@@ -14,7 +15,7 @@ namespace Gemini.Framework.Commands
             get { return "[NotUsed]"; }
         }
 
-        public override sealed Uri IconSource
+        public override sealed ImageSource IconSource
         {
             get { return null; }
         }

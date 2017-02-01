@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.Composition;
 using System.Windows.Input;
+using System.Windows.Media;
 using Gemini.Framework.Commands;
 using Gemini.Properties;
 
@@ -26,9 +27,9 @@ namespace Gemini.Modules.Shell.Commands
             get { return Resources.FileSaveCommandToolTip; }
         }
 
-        public override Uri IconSource
+        public override ImageSource IconSource
         {
-            get { return new Uri("pack://application:,,,/Gemini;component/Resources/Icons/Save.png"); }
+            get { return ToolBars.Converters.BitmapImageToImageSourceConverter.Convert(Properties.Resources.save_32x32_grey); }
         }
 
         [Export]

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Input;
+using System.Windows.Media;
 using Gemini.Framework.Menus;
 
 namespace Gemini.Modules.MainMenu.Models
@@ -14,7 +15,7 @@ namespace Gemini.Modules.MainMenu.Models
             get { return _menuDefinition.Text; }
 		}
 
-        public override Uri IconSource
+        public override ImageSource IconSource
 	    {
             get { return _menuDefinition.IconSource; }
 	    }

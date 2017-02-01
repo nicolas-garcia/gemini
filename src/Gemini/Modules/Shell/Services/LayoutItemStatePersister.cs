@@ -168,7 +168,7 @@ namespace Gemini.Modules.Shell.Services
 
                     int count = reader.ReadInt32();
 
-                    for (int i = 0; i < count; i++)
+                    for (int i = 0 ; i < count ; i++)
                     {
                         string typeName = reader.ReadString();
                         string contentId = reader.ReadString();
@@ -217,6 +217,7 @@ namespace Gemini.Modules.Shell.Services
                 if (stream != null) {
                     stream.Close();
                 }
+                File.Delete(fileName);
             }
 
             return true;
